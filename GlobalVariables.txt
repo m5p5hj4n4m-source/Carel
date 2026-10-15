@@ -6,7 +6,7 @@ ID_Lang	DINT	-1	Var	True	0	1	True	False	False	True	False	False	NoUnits	0	1		Lang
 DateFormat	INT		Var	True	0	2	True	False	True	True	True	False	NoUnits	0	1		Ga00 - Date format (0: DDMMYY; 1: MMDDYY; 2: YYMMDD)
 VerMismatch	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		
 Aout_FeedCompSpeed	BOOL		Var	True			False	True	True	True	False	False	NoUnits	0	1		Analog output: Compressor feedabck
-GlbAlrm_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A076 - Global alarm output logic (0=NO; 1=NC)
+GlbAlrm_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A076 - Логика цифрового выхода: Реле тревоги (0-тревога замкнуто/1 - тревога разомкнуто)
 GlbAlrm	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 Al_SrsCirc1	BOOL		Var	True			False	False	False	False	False	True	NoUnits	0	1		Serious alarm circuit 1
 CompShutdown	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
@@ -69,7 +69,7 @@ SuctTempPrb_Circ1.Err	INT		Var	True			False	True	False	True	False	False	NoUnits	
 SuctTempPrb_Circ1.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 SuctTempPrb_Circ1.MinVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Min probe value
 SuctTempPrb_Circ1.MaxVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Max probe value
-SuctTempPrb_Circ1.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca37 - Probe offset
+SuctTempPrb_Circ1.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca37 - Датчик температуры всасывания контура 1: коррекция
 SuctTempPrb_Circ1.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 EvdAlarmsCirc1.OR_Alrms	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 EvdAlarmsCirc1.Al_LowSH	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Low superheat
@@ -89,7 +89,7 @@ DscgTempPrb_Circ1.Err	INT		Var	True			False	True	False	True	False	False	NoUnits	
 DscgTempPrb_Circ1.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 DscgTempPrb_Circ1.MinVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Min probe value
 DscgTempPrb_Circ1.MaxVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Max probe value
-DscgTempPrb_Circ1.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca36 - Probe offset
+DscgTempPrb_Circ1.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca36 - Датчик температуры нагнетания контура 1: коррекция
 DscgTempPrb_Circ1.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 AlrmRes	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 MaskEnableOnEMB.Fl_DisplayEEV_Params	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		Enable/disable Custom EEV parameters masks/fields
@@ -306,9 +306,9 @@ SeeSHAna	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1
 SesSHInt	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		
 SeeSHInt	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		
 BmsOnOff_En	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		Ge16 - Enable the BMS Unit OnOff
-MinOnT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca12 - Compressor minimum On time
-MinOffT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca13 - Compressor minimum Off time
-MinOnOnSameT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca14 - Minimum time between On of same compressor
+MinOnT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca12 - Минимальное время компрессора во включенном состоянии
+MinOffT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca13 - Минимальное время компрессора в выключенном состоянии
+MinOnOnSameT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca14 - Минимальная пауза между двумя последовательными пусками одного компрессора
 EnvP_X6_Temp_Circ1	REAL		Var	True			False	False	True	False	False	False	DegreesCelsius	0	1		
 EnvP_X7_Temp_Circ1	REAL		Var	True			False	False	True	False	False	False	DegreesCelsius	0	1		
 En_IOMsk	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		
@@ -467,8 +467,8 @@ UserPmp1_On	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		User 
 UserPmp2_On	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		User pump 2 status
 UserFlwSw	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 RunTempRegKp	REAL		Var	True	0.1	30.0	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A031 - Run PID proportional band
-StartUpTempRegKp	REAL		Var	True	0.1	30.0	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A028 - Startup PID proportional band
-StartUpTempRegTi	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A029 - Startup PID integral time
+StartUpTempRegKp	REAL		Var	True	0.1	30.0	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A028 - Пид-регулятор во время пуска: Пропорциональный коэффициент
+StartUpTempRegTi	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A029 - Пид-регулятор во время пуска:Время интегрирования
 DevPwrComp3Circ1	REAL		Var	True	0.0		True	False	True	True	True	False	Kilowatts	0	1		Ca66 - Compressor 3 circuit 1 device power
 CompsManCirc1	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 TT_ReqComp2Circ1	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
@@ -636,7 +636,7 @@ NOTUSED61.Trigger	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1
 NOTUSED61.Active	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status
 RunTempRegTi	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A032 - Run PID integral time
 RunTempRegTd	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		A033 - Run PID derivative time
-StartUpTempRegTd	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		A030 - Startup PID derivative time
+StartUpTempRegTd	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		A030 - Пид-регулятор во время пуска:Время дифференцирования
 RegSetP	REAL		Var	False			False	False	True	True	False	True	DegreesCelsius	0	1		Actual setpoint
 UserPmpRunNoAlFlw	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 UserPmpRun	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
@@ -658,15 +658,15 @@ SrcPmp2Man	UINT		Var	True	0	2	False	False	True	True	False	False	NoUnits	0	1		E00
 SrcPmpTyp	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		E069 - Source pump type (0=On/Off; 1=Inverter)
 SrcPmpFlw_StartUpDT	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		E020 - Source pump flow alarm startup delay
 SrcPmpFlw_RunDT	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		E021 - Source pump flow alarm run delay
-SrcFanTempThrshFrost	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E012 - Source fan temperature threshold for cold climates
+SrcFanTempThrshFrost	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E012 - Предельная температура для вентилятора конденсатора в странах с холодным климатом
 DT_SrcPmpOff	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		E023 - Source pump delay Off since the compressor Off 
-SrcFanSpeedUpSpeedFrost	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E014 - Source fan speed up speed for cold climates
+SrcFanSpeedUpSpeedFrost	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E014 - Повышенные обороты вентилятора конденсатора в странах с холодным климатом
 DT_SrcPmpOn	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		E022 - Compressor delay On since the source pump On 
-SrcFanSpeedUpTimeFrost	UINT		Var	True	0	300	True	False	True	True	True	False	Seconds	0	1		E015 - Source fan speed up time for cold climates
+SrcFanSpeedUpTimeFrost	UINT		Var	True	0	300	True	False	True	True	True	False	Seconds	0	1		E015 - Время работы вентилятора конденсатора на повышенных оборотах в странах с холодным климатом
 SrcPmpRotT	UINT		Var	True	0	99	True	False	True	True	False	False	Hours	0	1		E024 - Source pump rotation time
-SrcFanMinSpeedFrost	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E013 - Source fan minimum speed for cold climates
-SrcFanInvMaxSpeed	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E034 - Source inverter fan maximum speed
-SrcFanInvMinSpeed	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E033 - Source inverter fan minimum speed
+SrcFanMinSpeedFrost	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E013 - Минимальная скорость вентилятора конденсатора в странах с холодным климатом
+SrcFanInvMaxSpeed	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E034 - Максимальная скорость инверторного вентилятора конденсатора
+SrcFanInvMinSpeed	REAL		Var	True	0.0	100.0	True	False	True	True	True	False	Percent	0	1		E033 - Минимальная скорость инверторного вентилятора конденсатора
 PmpDwnTyp	UINT		Var	True	0	3	True	False	True	True	False	False	NoUnits	0	1		B036 - Pump down type (0=None; 1=Stop; 2=Start; 3=Start and stop)
 DfrRunCirc1	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Circuit 1 - Defrost is running
 DfrFrcCompOffCirc1	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Circuit 1 - Force compressor off
@@ -675,10 +675,10 @@ AFreezeSetP	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesC
 AFreezeUserThrsh	REAL		Var	True	-99.9	99.9	True	False	True	True	True	False	DegreesCelsius	0	1		A039 - Antifreeze user alarm threshold
 AFreezeUserT_1K	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A041 - Antifreeze user alarm delay time at 1K below threshold
 AFreezePmpUser	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Antifreeze user pump status
-En_LowNoise	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		E016 - Enable low noise function
+En_LowNoise	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		E016 - Режим тихой работы
 LowNoiseEndMin	INT		Var	True	0	59	True	False	True	True	True	False	Minutes	0	1		E018 - Low noise end minute time band 
-SchedStartHr	INT		Var	True	0	23	True	False	True	True	True	False	Hours	0	1		A015 - Scheduler start hour time band
-SchedStartMin	INT		Var	True	0	59	True	False	True	True	True	False	Minutes	0	1		A015 - Scheduler start minute time band
+SchedStartHr	INT		Var	True	0	23	True	False	True	True	True	False	Hours	0	1		A015 - Начальное время включения установки (часы)
+SchedStartMin	INT		Var	True	0	59	True	False	True	True	True	False	Minutes	0	1		A015 - Начальное время включения установки (минуты)
 AFreezeHeatSrc	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Antifreeze source heater status
 AFreezePmpSrc	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Antifreeze source pump status
 AFreezeDiff	REAL		Var	True	0.0	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A043 - Antifreeze (with unit Off) differential
@@ -689,7 +689,7 @@ UnitAW	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Air/Water
 LowNoiseEndHr	INT		Var	True	0	23	True	False	True	True	True	False	Hours	0	1		E018 - Low noise end hour time band 
 LowNoiseStartHr	INT		Var	True	0	23	True	False	True	True	True	False	Hours	0	1		E017 - Low noise start hour time band 
 LowNoiseStartMin	INT		Var	True	0	59	True	False	True	True	True	False	Minutes	0	1		E017 - Low noise start minute time band 
-LowNoiseFanSetP_CH	REAL		Var	True	0.0	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E019 - Low noise fan setpoint in cooling
+LowNoiseFanSetP_CH	REAL		Var	True	0.0	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E019 - Температура перехода вентилятора на режим тихой работы в режиме охлаждения
 UserPmp1Man	UINT		Var	True			False	False	True	True	False	False	NoUnits	0	1		A001 - User pump 1 manual mode
 W_InTempUserPrb.Val	REAL		Var	True			False	True	False	True	False	False	DegreesCelsius	0	1		Value
 W_InTempUserPrb.ChTyp	UINT		Var	True			False	True	False	False	False	False	NoUnits	0	1		Channel type
@@ -721,7 +721,7 @@ DscgP_Prb_Circ1.Err	INT		Var	True			False	True	False	True	False	False	NoUnits	0	
 DscgP_Prb_Circ1.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 DscgP_Prb_Circ1.MinVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Min probe value
 DscgP_Prb_Circ1.MaxVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Max probe value
-DscgP_Prb_Circ1.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca41 - Probe offset
+DscgP_Prb_Circ1.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca41 - Датчик давления нагнетания контура 1: коррекция
 DscgP_Prb_Circ1.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 SuctP_Prb_Circ1.Val	REAL		Var	True			False	True	False	True	False	False	Bars	0	1		Value
 SuctP_Prb_Circ1.ChTyp	UINT		Var	True			False	True	False	False	False	False	NoUnits	0	1		Channel type
@@ -729,7 +729,7 @@ SuctP_Prb_Circ1.Err	INT		Var	True			False	True	False	True	False	False	NoUnits	0	
 SuctP_Prb_Circ1.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 SuctP_Prb_Circ1.MinVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Min probe value
 SuctP_Prb_Circ1.MaxVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Max probe value
-SuctP_Prb_Circ1.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca42 - Probe offset
+SuctP_Prb_Circ1.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca42 - Датчик давления всасывания контура 1: коррекция
 SuctP_Prb_Circ1.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 LowP_PstatCirc1	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 HiP_PstatCirc1	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
@@ -751,7 +751,7 @@ ExtTempPrb.Err	INT		Var	True			False	False	True	True	False	False	NoUnits	0	1		Er
 ExtTempPrb.Filt	UINT		Var	True			False	False	False	True	False	False	NoUnits	0	1		Filter intensity
 ExtTempPrb.MinVal	REAL		Var	True			False	False	False	False	False	False	DegreesCelsius	0	1		Min probe value
 ExtTempPrb.MaxVal	REAL		Var	True			False	False	False	False	False	False	DegreesCelsius	0	1		Max probe value
-ExtTempPrb.Offset	REAL		Var	True			True	False	True	True	True	False	DeltaDegreesKelvin	0	1		E056 - Probe offset
+ExtTempPrb.Offset	REAL		Var	True			True	False	True	True	True	False	DeltaDegreesKelvin	0	1		E056 - Коррекция показаний датчика температуры наружного воздуха
 ExtTempPrb.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 W_OutTempUser	REAL		Var	True	-999.9	999.9	False	False	True	True	False	True	DegreesCelsius	0	1		User water outlet probe
 En_LiqdTempPrbCirc1	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Liquid temperature probe circuit 1 present
@@ -764,16 +764,16 @@ SuctP_PrbMinVal	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	Bars
 SrcPmpRunNoAlFlw	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 SuctP_PrbMaxVal	REAL		Var	True	SuctP_PrbMinVal	999.9	True	False	True	True	True	False	Bars	0	1		Ca55 - Suction pressure probe maximum value
 RemAlrmDin_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A066 - Remote alarm input logic (0=NC; 1=NO)
-RegTypStartup	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A025 - Startup regulation probe (0=Inlet; 1=Outlet)
+RegTypStartup	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A025 - Тип регулирования во время запуска (по входу/по выходу)
 DscgP_PrbMaxVal	REAL		Var	True	DscgP_PrbMinVal	999.9	True	False	True	True	True	False	Bars	0	1		Ca58 - Discharge pressure probe maximum value
 CompsOnCirc1	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		Al least one compressor in the circuit is On
-SrcFanStartUpT_CH	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		E029 - Source fan startup delay in chiller mode
-SrcFanStartUpSetP_CH	REAL		Var	True	0.0	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E028 - Source fan setpoint at startup in chiller mode
+SrcFanStartUpT_CH	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		E029 - Время задержки включения вентилятора конденсатора в режиме холодильной машины
+SrcFanStartUpSetP_CH	REAL		Var	True	0.0	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E028 - Уставка вентилятора конденсатора в момент запуска в режиме холодильной машины
 SrcFanDiffHP	REAL		Var	True	0.0	99.9	True	False	True	True	False	False	DeltaDegreesKelvin	0	1		E032 - Source fan differential in heatpump mode
-SrcFanSetP_CH	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E025 - Source fan setpoin in chiller mode
+SrcFanSetP_CH	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		E025 - Заданная температура вентилятора конденсатора в режиме охлаждения
 SrcFanSetP_HP	REAL		Var	True	-999.9	999.9	True	False	True	True	False	False	DegreesCelsius	0	1		E026 - Source fan setpoin in heatpump mode
 SrcFanNo	USINT		Var	True	1	3	True	False	False	True	False	False	NoUnits	0	1		E091 - Number of source fans
-SrcFanDiffCH	REAL		Var	True	0.0	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		E031 - Source fan differential in chiller mode
+SrcFanDiffCH	REAL		Var	True	0.0	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		E031 - Дифференциал вентилятора конденсатора в режиме холодильной машины
 FanDiffCH	REAL		Var	True	0.0	100.0	True	False	False	True	False	False	Percent	0	1		EXXX - On/Off Fan differential in chiller mode [%] (percentage of whole differential)
 FanDiffHP	REAL		Var	True	0.0	100.0	True	False	False	True	False	False	Percent	0	1		EXXX - On/Off Fan differential in heatpump mode [%] (percentage of whole differential)
 PmpDwnMaxT	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		B035 - Pump down maximum time duration
@@ -810,7 +810,7 @@ PreventCirc_ARRAY[29]	INT		Var	True			False	False	False	False	False	False	NoUnit
 PreventCirc_ARRAY[30]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 PreventCirc_ARRAY[31]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 CompOnOffManuf	UINT		Var	True	0	8	True	False	True	True	True	False	NoUnits	0	1		Ca67 - Compressor manufacturer for On/Off compressors
-CompOnOffModel	UINT		Var	True	0		True	False	True	True	True	False	NoUnits	0	1		Ca68 - Compressor model for On/Off compressors
+CompOnOffModel	UINT		Var	True	0		True	False	True	True	True	False	NoUnits	0	1		Ca68 - Модель компрессора с двухпозиционным регулированием (DANFOSS)
 CompOnOffCfgEnv.EvapMinTemp	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Evaporation minimum temperature
 CompOnOffCfgEnv.EvapMaxTemp	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Evaporation minimum temperature
 CompOnOffCfgEnv.EvapEconMaxTemp	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Economy evaporation maximum temperature
@@ -840,7 +840,7 @@ CompOnOffCfgEnv.MaxCapY2	REAL		Var	True			False	False	False	False	False	False	No
 CompOnOffCfgEnv.DscgMinTemp	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Discharge minimum temperature
 CompOnOffCfgEnv.DscgMaxTemp	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Discharge maximum temperature
 CompOnOffCfgEnv.MaxLimCap	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Maximum capacity limit
-RfrgTyp	UINT		Var	True	0	22	True	False	True	True	True	False	NoUnits	0	1		Ca63 - Refrigerant type (only for On/Off compressor units)
+RfrgTyp	UINT		Var	True	0	22	True	False	True	True	True	False	NoUnits	0	1		Ca63 - Тип хладагента (только для машин с компрессорами с двухпозиционным регулированием)
 EnvP_Y_Circ1[0]	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 EnvP_Y_Circ1[1]	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 EnvP_Y_Circ1[2]	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
@@ -868,12 +868,12 @@ EnvAlrmsCirc1.LowDeltaP	BOOL		Var	True			False	False	False	False	False	False	NoU
 EnvAlrmsCirc1.DscgHiTemp	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Discharge high temperature
 CompOnOffPreventRun	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Compressor On/Off prevent enable
 CompPreventT	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		Ca21 - Prevent minimum duration
-SchedEndHr	INT		Var	True	0	23	True	False	True	True	True	False	Hours	0	1		A016 - Scheduler end hour time band 
-SchedEndMin	INT		Var	True	0	59	True	False	True	True	True	False	Minutes	0	1		A016 - Scheduler end minute time band
-CoolSetP_Sched	REAL		Var	True	-50.0	90.0	True	False	True	True	True	False	DegreesCelsius	0	1		A018 - Second setpoint in cooling
+SchedEndHr	INT		Var	True	0	23	True	False	True	True	True	False	Hours	0	1		A016 - Конечное время включения установки (часы)
+SchedEndMin	INT		Var	True	0	59	True	False	True	True	True	False	Minutes	0	1		A016 - Конечное время включения установки (минуты)
+CoolSetP_Sched	REAL		Var	True	-50.0	90.0	True	False	True	True	True	False	DegreesCelsius	0	1		A018 - Вторая уставка для охлаждения
 HeatSetP_Sched	REAL		Var	True	-50.0	90.0	True	False	True	True	False	False	DegreesCelsius	0	1		A019 - Second setpoint in heating
-En_Sched	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A014 - Enable scheduling function
-SchedTyp	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A017 - Type of scheduling (0=Switch Off/On; 1=Change setpoint)
+En_Sched	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A014 - Активация расписания
+SchedTyp	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A017 - При расписании работа по второй уставке (0: ВКЛ/ВЫКЛ; 1: 2-я уставка)
 AFreezeUserDiff	REAL		Var	True	0.0	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A040 - Antifreeze user alarm differential
 AFreezeSrcDiff	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	DeltaDegreesKelvin	0	1		E054 - Antifreeze source alarm differential
 AFreezeSrcT_1K	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		E055 - Antifreeze source alarm delay time at 1K below threshold
@@ -882,7 +882,7 @@ AFreezeHeatUser	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1
 RevVlvCirc1	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Reverse valve
 FC_Vlv_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A054 - Free cooling solenoid valve logic (0=NO; 1=NC)
 FC_Modul	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Free cooling modulating power request
-CompOnLogic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca49 - Compressor output logic (0=NO; 1=NC)
+CompOnLogic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca49 - Логическая схема выхода компрессора (0 = норм. разомкнут; 1 = норм. замкнут)
 AFreezeHeatUser_Logic	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		A055 - Antifreeze heater output logic 
 RevVlvLogic	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		E062 - Reverse valve output logic (0=NO; 1=NC)
 SolVlvCirc1	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		Solenoid valve circuit 1
@@ -901,16 +901,16 @@ DscgTempCirc1	REAL		Var	True	-999.9	999.9	False	False	True	True	False	True	Degre
 NotUdedBOOL	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 En_ExtTempPrb	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		E073 - Enable external temperature probe
 UnitOnOffDin_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A067 - Unit On/Off input logic (0=NC; 1=NO)
-RegTypRun	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A027 - Run regulation probe (0=Inlet; 1=Outlet)
+RegTypRun	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A027 - Тип регулирования во время работы (по входу/по выходу)
 DscgP_PrbMinVal	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	Bars	0	1		Ca57 - Discharge pressure probe minumum value
 UserFlwSw_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A049 - User pump flow input logic (0=NC; 1=NO)
 RegTypPrb	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Regulation probe (0=Inlet; 1=Outlet)
-DT_StartupRunPID	INT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A026 - Delay time between Startup PID and Run PID
+DT_StartupRunPID	INT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A026 - Задержка переключения
 SrcFlwSw_Logic	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		E059 - Source pump flow input logic (0=NC; 1=NO)
-LowP_Pstat_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca47 - Low pressure pressostat input logic (0=NC; 1=NO)
-CircNo	USINT		Var	True	1	4	True	False	True	True	True	False	NoUnits	0	1		Ca69 - Number of circuit in the unit
-CompNo	USINT		Var	True	1	3	True	False	True	True	True	False	NoUnits	0	1		Ca70- Number of compressors in the circuit
-HiP_Pstat_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca46 - High pressure pressostat input logic (0=NC; 1=NO)
+LowP_Pstat_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca47 - Логическая схема входа прессостата низкого давления (0: тревога = разомкнут; 1: тревога = замкнут)
+CircNo	USINT		Var	True	1	4	True	False	True	True	True	False	NoUnits	0	1		Ca69 - Количество контуров машины
+CompNo	USINT		Var	True	1	3	True	False	True	True	True	False	NoUnits	0	1		Ca70 - Компрессор на контуре
+HiP_Pstat_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca46 - Логическая схема входа прессостата высокого давления (0: тревога = разомкнут; 1: тревога = замкнут)
 En_BLDC_Circ1	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 En_CompsOnOffCirc1	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 En_TandemCirc1	BOOL		Var	True			False	False	True	False	False	False	NoUnits	0	1		
@@ -920,7 +920,7 @@ En_Comp3Circ1	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1
 PmpDwnRunCompsOnOffCirc1	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 ForceByPreventActive	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 MOPThrsFastChgCompsOnOffCirc1	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
-DevPwrComp1Circ1	REAL		Var	True	0.0		True	False	True	True	True	False	Kilowatts	0	1		Ca64 - Compressor 1 circuit 1 device power
+DevPwrComp1Circ1	REAL		Var	True	0.0		True	False	True	True	True	False	Kilowatts	0	1		Ca64 - Нагрузка компрессора 1 контура 1
 SolVlvCompsOnOffCirc1	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 CoolCapCirc1	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 DevPwrComp2Circ1	REAL		Var	True	0.0		True	False	True	True	True	False	Kilowatts	0	1		Ca65 - Compressor 2 circuit 1 device power
@@ -1228,31 +1228,31 @@ Al_SrsUnit	BOOL		Var	True			False	False	False	False	False	True	NoUnits	0	1		Seri
 SrcFansCirc1_Man	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 DscgSH_Circ1	REAL		Var	True	-999.9	999.9	False	False	True	True	False	True	DeltaDegreesKelvin	0	1		Discharge SH Circ1
 SuctSH_Circ1	REAL		Var	True	-99.9	99.9	False	False	True	True	False	True	DeltaDegreesKelvin	0	1		Suction SH Circ1
-HiLimMskSetP_CH	REAL		Var	True	LowLimMskSetP_CH	50.0	True	False	True	True	True	False	DegreesCelsius	0	1		A005 - High limit in mask for the setpoint in cooling
-HiLimMskSetP_HP	REAL		Var	True	LowLimMskSetP_HP	90.0	True	False	True	True	False	False	DegreesCelsius	0	1		A007 - High limit in mask for the setpoint in heating
-LowLimMskSetP_CH	REAL		Var	True	-50.0	50.0	True	False	True	True	True	False	DegreesCelsius	0	1		A004 - Low limit in mask for the setpoint in cooling
-LowLimMskSetP_HP	REAL		Var	True	0.0	90.0	True	False	True	True	False	False	DegreesCelsius	0	1		A006 - Low limit in mask for the setpoint in heating
+HiLimMskSetP_CH	REAL		Var	True	LowLimMskSetP_CH	50.0	True	False	True	True	True	False	DegreesCelsius	0	1		A005 - Максимальное ограничение уставки охлаждения
+HiLimMskSetP_HP	REAL		Var	True	LowLimMskSetP_HP	90.0	True	False	True	True	False	False	DegreesCelsius	0	1		A007 - Максимальное ограничение уставки нагрева
+LowLimMskSetP_CH	REAL		Var	True	-50.0	50.0	True	False	True	True	True	False	DegreesCelsius	0	1		A004 - Минимальное ограничение уставки охлаждения
+LowLimMskSetP_HP	REAL		Var	True	0.0	90.0	True	False	True	True	False	False	DegreesCelsius	0	1		A006 - Минимальное ограничение уставки нагрева
 En_EVD	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		
-En_EVD_Msk	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B051 - Enable electronic expansion valve
+En_EVD_Msk	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B051 - Электронный терморегулирующий вентиль
 En_CustomLoSuctP	BOOL		Var	True			False	False	True	False	False	False	NoUnits	0	1		Enamble custom suction low pressure
 En_CustomHiDscgP	BOOL		Var	True			False	False	True	False	False	False	NoUnits	0	1		Enable custom high discharge pressure
-CstEvapMinTemp	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		Ca17 - Evaporating minimum temperature custom envelop limit
-CstCondMaxTemp	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		Ca18 - Condensing maximum temperature custom envelop limit
-EEV_LowSH_AlrmDT	INT		Var	True	EEV_LowSH_AlrmDT_MskLimMin	EEV_LowSH_AlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B024 - ExV low SH alarm delay time
-CompOvld_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca48 - Compressor overload input logic (0=NC; 1=NO)
+CstEvapMinTemp	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		Ca17 - Конфигурируемая минимальная температура испарения
+CstCondMaxTemp	REAL		Var	True	-999.9	999.9	True	False	True	True	True	False	DegreesCelsius	0	1		Ca18 - Конфигурируемая максимальная температура конденсации
+EEV_LowSH_AlrmDT	INT		Var	True	EEV_LowSH_AlrmDT_MskLimMin	EEV_LowSH_AlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B024 - Время задержки тревоги низкого перегрева вентилем ЭРВ
+CompOvld_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		Ca48 - Логическая схема входа перегрузки компрессора (0: тревога = разомкнут; 1: тревога = замкнут)
 En_PmpDwn	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
-EEV_LOP_AlrmDT	INT		Var	True	EEV_LOP_AlrmDT_MskLimMin	EEV_LOP_AlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B025 - ExV LOP alarm delay time
+EEV_LOP_AlrmDT	INT		Var	True	EEV_LOP_AlrmDT_MskLimMin	EEV_LOP_AlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B025 - Время задержки тревоги вентиля ЭРВ: минимальное рабочее давление
 En_Circ2	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
-EEV_MOP_AlrmDT	INT		Var	True	EEV_MOP_AlrmDT_MskLimMin	EEV_MOP_AlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B026 - ExV MOP alarm delay time
-EEV_HiTempCondAlrmDT	INT		Var	True	EEV_HiTempCondAlrmDT_MskLimMin	EEV_HiTempCondAlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B029 - ExV high condensing temperature alarm delay time
-EEV_LowSuctAlrmDT	INT		Var	True	EEV_LowSuctAlrmDT_MskLimMin	EEV_LowSuctAlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B031 - ExV low suction temperature alarm delay time
+EEV_MOP_AlrmDT	INT		Var	True	EEV_MOP_AlrmDT_MskLimMin	EEV_MOP_AlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B026 - Время задержки тревоги вентиля ЭРВ: максимальное рабочее давление
+EEV_HiTempCondAlrmDT	INT		Var	True	EEV_HiTempCondAlrmDT_MskLimMin	EEV_HiTempCondAlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B029 - Вентиль ЭРВ: время задержки тревоги высокой температура конденсации
+EEV_LowSuctAlrmDT	INT		Var	True	EEV_LowSuctAlrmDT_MskLimMin	EEV_LowSuctAlrmDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B031 - Вентиль ЭРВ время задержки тревоги низкой температуры всасывания
 EEV_SH_WaitDT	INT		Var	True	EEV_SH_WaitDT_MskLimMin	EEV_SH_WaitDT_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B037 - ExV regulation delay after power-on
-EEV_HiTempCondThrsh	REAL		Var	True	EEV_HiTempCondThrsh_MskLimMin	EEV_HiTempCondThrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B027 - ExV high condensing temperature threshold
-EEV_HiTempCondTi	REAL		Var	True	EEV_HiTempCondTi_MskLimMin	EEV_HiTempCondTi_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B028 - ExV high condensing temperature integral time
-EEV_LowSuctAlrmThrsh	REAL		Var	True	EEV_LowSuctAlrmThrsh_MskLimMin	EEV_LowSuctAlrmThrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B030 - ExV low suction temperature alarm threshold
+EEV_HiTempCondThrsh	REAL		Var	True	EEV_HiTempCondThrsh_MskLimMin	EEV_HiTempCondThrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B027 - Вентиль ЭРВ тревога высокой температуры конденсации
+EEV_HiTempCondTi	REAL		Var	True	EEV_HiTempCondTi_MskLimMin	EEV_HiTempCondTi_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B028 - Вентиль ЭРВ интегрирующая составляющая регулирования при тревоге высокой температуры конденсации
+EEV_LowSuctAlrmThrsh	REAL		Var	True	EEV_LowSuctAlrmThrsh_MskLimMin	EEV_LowSuctAlrmThrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B030 - Вентиль ЭРВ: тревога низкой температуры всасывания
 Emb_EEV_Typ	INT		Var	True			True	False	True	True	False	False	NoUnits	0	1		B049 - ExV valve type (for EVD Emb)
-EEV_MoveRate	INT		Var	True	EEV_MoveRate_MskLimMin	EEV_MoveRate_MskLimMax	True	False	True	True	True	False	Hertz	0	1		B041 - ExV move rate custom
-EEV_FastClosMoveRate	INT		Var	True	EEV_FastClosMoveRate_MskLimMin	EEV_FastClosMoveRate_MskLimMax	True	False	True	True	True	False	Hertz	0	1		B042 - ExV emergency fast close rate custom
+EEV_MoveRate	INT		Var	True	EEV_MoveRate_MskLimMin	EEV_MoveRate_MskLimMax	True	False	True	True	True	False	Hertz	0	1		B041 - Конфигурируемая рабочая частота вентиля ЭРВ
+EEV_FastClosMoveRate	INT		Var	True	EEV_FastClosMoveRate_MskLimMin	EEV_FastClosMoveRate_MskLimMax	True	False	True	True	True	False	Hertz	0	1		B042 - Конфигурируемая частота аварийного быстрого закрытия вентиля ЭРВ
 NOTUSED76.Trigger	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status Trigger
 NOTUSED76.Active	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status
 NOTUSED77.Trigger	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status Trigger
@@ -1281,19 +1281,19 @@ NOTUSED88.Trigger	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1
 NOTUSED88.Active	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status
 NOTUSED89.Trigger	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status Trigger
 NOTUSED89.Active	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status
-EEV_MoveDuty	INT		Var	True	EEV_MoveDuty_MskLimMin	EEV_MoveDuty_MskLimMax	True	False	True	True	True	False	Percent	0	1		B045 - ExV duty cycle custom
-EEV_RegMinPos	INT		Var	True	EEV_RegMinPos_MskLimMin	EEV_RegMinPos_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B038 - ExV minimum steps custom
-EEV_RegMaxPos	INT		Var	True	EEV_RegMaxPos_MskLimMin	EEV_RegMaxPos_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B039 - ExV maximum steps custom
-EEV_ExtraOpEn	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B046 - ExV opening valve position synchronization custom
-EEV_ExtraClosEn	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B047 - ExV closing valve position synchronization custom
-EEV_FullClosSteps	INT		Var	True	EEV_FullClosSteps_MskLimMin	EEV_FullClosSteps_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B040 - ExV full closing steps custom
+EEV_MoveDuty	INT		Var	True	EEV_MoveDuty_MskLimMin	EEV_MoveDuty_MskLimMax	True	False	True	True	True	False	Percent	0	1		B045 - Конфигурируемая скважность вентиля ЭРВ
+EEV_RegMinPos	INT		Var	True	EEV_RegMinPos_MskLimMin	EEV_RegMinPos_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B038 - Конфигурируемое минимальное число ступеней регулирования вентиля ЭРВ
+EEV_RegMaxPos	INT		Var	True	EEV_RegMaxPos_MskLimMin	EEV_RegMaxPos_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B039 - Конфигурируемое максимальное число ступеней регулирования вентиля ЭРВ
+EEV_ExtraOpEn	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B046 - Конфигурируемая синхронизация открытого положения вентилей ЭРВ
+EEV_ExtraClosEn	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B047 - Конфигурируемая синхронизация закрытого положения вентилей ЭРВ
+EEV_FullClosSteps	INT		Var	True	EEV_FullClosSteps_MskLimMin	EEV_FullClosSteps_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B040 - Конфигурируемое число ступеней полного закрытия вентиля ЭРВ
 SchedSetP_Active	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Setpoint by scheduler active
 StandByEEV_OpEn_Circ1	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 EEV_Circ1_ManPositSteps	INT		Var	True	EEV_ManPositSteps_MskLimMin	EEV_ManPositSteps_MskLimMax	False	False	True	True	False	False	NoUnits	0	1		B001 - ExV circuit 1 manual mode
 CoolHeatKeyb	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		Q003 - Chiller/Heatpump working mode by Keyboard
 EEV_Circ1_ManPositEn	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		B000 - ExV circuit 1 enable manual mode
 SchedOnOff	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Unit OnOff by Scheduler (0=Off; 1=On)
-EEV_DC_SupplyEn	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B048 - ExV power supply mode (0=24 Vac; 1=24 Vdc)
+EEV_DC_SupplyEn	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		B048 - Питание вентиля ЭРВ (0 = переменный ток напряжением 24В; 1 = постоянный ток напряжением 24В)
 SrcFanStatusCirc1	UINT		Var	True	0	10	False	False	True	True	False	True	NoUnits	0	1		
 SrcSetP_Circ1	REAL		Var	True	-999.9	999.9	False	False	True	True	False	True	DegreesCelsius	0	1		
 DfrStatusCirc1	INT		Var	True	0	999	False	False	True	True	False	False	NoUnits	0	1		Circuit 1 - Defrost status
@@ -1407,23 +1407,23 @@ SrcPmp2Ovld_Din.Logic	BOOL		Var	True			False	False	False	False	False	False	NoUni
 SrcPmp2Ovld_Din.Internal	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 SrcPmp2Ovld_Din.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 En_UserPmp1Ovld_Din	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
-CompsLdDwnT	UINT		Var	True	5	999	True	False	True	True	True	False	Seconds	0	1		Ca16 - Compressor load down time
+CompsLdDwnT	UINT		Var	True	5	999	True	False	True	True	True	False	Seconds	0	1		Ca16 - Время задержки выключения одного компрессора относительно другого
 OutEnvAlrmDT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca22 - Out of envelope alarm delay time
 Destabil_MinSpeedThrsh	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	NoUnits	0	1		Ca24 - Circuit destabilization minimum BLDC speed threshold
 Destabil_DT_CompOff	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca23 - Circuit destabilization maximum time with one or more compressors Off
-OilRecov_FrcSpeedT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca28 - Oil recovery duration in which the compressor speed is forced
+OilRecov_FrcSpeedT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca28 - Задержка между включениями функции возврата масла
 OilRecov_MinReqThrsh	REAL		Var	True	0.0	100.0	True	False	True	True	False	False	Percent	0	1		Ca25 - Oil recovery minimun request for activation
 OilRecov_CompMinSpeedThrsh	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	NoUnits	0	1		Ca26 - Oil recovery minimun compressor speed for activation
-OilRecov_FrcCompSpeed	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	NoUnits	0	1		Ca29 - Oil recovery compressor speed in which the compressor is forced
-OilRecov_WaitT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca27 - Oil recovery time before activation in which the compressor can run at minimum speed
+OilRecov_FrcCompSpeed	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	NoUnits	0	1		Ca29 - Принудительные обороты компрессора для возврата масла
+OilRecov_WaitT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca27 - Включение функции возврата масла
 OilEquVlv_StartUpT	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		Ca30 - Oil equalization startup time of solenoid valve on compressor starts
-OilEquVlv_OnT	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		Ca31 - Oil equalization solenoid valve open time
-OilEquVlv_MinOffT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca32 - Oil equalization solenoid valve minimum off time
-OilEquVlv_MaxOffT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca33 - Oil equalization solenoid valve maximum off time
-OilEquVlv_TotalT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca34 - Oil equalization maximum time for the management
+OilEquVlv_OnT	UINT		Var	True	0	999	True	False	True	True	False	False	Seconds	0	1		Ca31 - Время балансировочного электромагнитного вентиля масла в открытом состоянии
+OilEquVlv_MinOffT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca32 - Минимальное время балансировочного электромагнитного вентиля масла в закрытом состоянии
+OilEquVlv_MaxOffT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca33 - Максимальное время балансировочного электромагнитного вентиля масла в закрытом состоянии
+OilEquVlv_TotalT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		Ca34 - Максимальное время балансирования масла во время регулирования
 OilEquVlv_Logic	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		Ca50 - Oil equalization solenoid valve circuit 1 output logic (0=NO; 1=NC)
 BLDC_EqP_Vlv_Logic	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		CaXX - Pressure equalization valve BLDC output logic (0=NC; 1=NO)
-SrcFan_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		E060 - Source fan output logic (0=NO; 1=NC)
+SrcFan_Logic	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		E060 - Перегрузка вентилятора (0 -разомкнуто/ 1-замкнуто)
 En_OilEqu	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		Ca62 - Enable oil equalization function
 En_CircDestabil	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		Ca59 - Enable the circuit destabilization function
 En_OilRecov	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		Ca61 - Enable the oil recovery function
@@ -1579,24 +1579,24 @@ SetP_Compens_T1_HP	REAL		Var	True	SetP_Compens_T2_HP	50.0	True	False	True	True	F
 SetP_Compens_T2_HP	REAL		Var	True	-50.0	SetP_Compens_T1_HP	True	False	True	True	False	False	DegreesCelsius	0	1		A012 - Ending temperature point for setpoint compensation
 FC_Typ	UINT		Var	True	0	2	True	False	True	True	False	False	NoUnits	0	1		A060 - Free-cooling type (0=Air; 1=Air remote; 2=Water)
 En_SetP_Compens	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A062 - Enable setpoint compensation function
-EEV_PID_KpCH	REAL		Var	True	EEV_PID_Kp_MskLimMin	EEV_PID_Kp_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B005 - ExV proportional gain SH regulation in cooling
-EEV_PID_TiCH	REAL		Var	True	EEV_PID_Ti_MskLimMin	EEV_PID_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B006 - ExV integral time SH regulation in cooling
-EEV_PID_TdCH	REAL		Var	True	EEV_PID_Td_MskLimMin	EEV_PID_Td_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B007 - ExV derivative time SH regulation in cooling
-EEV_LOP_ThrshCH	REAL		Var	True	EEV_LOP_Thrsh_MskLimMin	EEV_LOP_Thrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B016 - ExV LOP regulation threshold in cooling
-EEV_LOP_TiCH	REAL		Var	True	EEV_LOP_Ti_MskLimMin	EEV_LOP_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B017 - ExV integral time LOP regulation in cooling
-EEV_MOP_ThrshCH	REAL		Var	True	EEV_MOP_Thrsh_MskLimMin	EEV_MOP_Thrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B020 - ExV MOP regulation threshold in cooling
-EEV_MOP_TiCH	REAL		Var	True	EEV_MOP_Ti_MskLimMin	EEV_MOP_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B021 - ExV integral time MOP regulation in cooling
-EEV_LowSH_ThrshCH	REAL		Var	True	EEV_LowSH_Thrsh_MskLimMin	EEV_LowSH_Thrsh_MskLimMax	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		B012 - ExV low SH threshold in cooling
-EEV_LowSH_TiCH	REAL		Var	True	EEV_LowSH_Ti_MskLimMin	EEV_LowSH_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B013 - ExV integral time low SH in cooling
-SrcFan1Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		E006 - Source fan 1 circuit 1 maintenance hour threshold (in thousands)
+EEV_PID_KpCH	REAL		Var	True	EEV_PID_Kp_MskLimMin	EEV_PID_Kp_MskLimMax	True	False	True	True	True	False	NoUnits	0	1		B005 - Пропорциональная составляющая регулирования перегрева вентилем ЭРВ в режиме охлаждения
+EEV_PID_TiCH	REAL		Var	True	EEV_PID_Ti_MskLimMin	EEV_PID_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B006 - Интегрирующая составляющая регулирования перегрева вентилем ЭРВ в режиме охлаждения
+EEV_PID_TdCH	REAL		Var	True	EEV_PID_Td_MskLimMin	EEV_PID_Td_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B007 - Дифференцирующая составляющая регулирования перегрева вентилем ЭРВ в режиме охлаждения
+EEV_LOP_ThrshCH	REAL		Var	True	EEV_LOP_Thrsh_MskLimMin	EEV_LOP_Thrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B016 - Величина перегрева вентилем ЭРВ: тревога минимального рабочего давления в режиме охлаждения
+EEV_LOP_TiCH	REAL		Var	True	EEV_LOP_Ti_MskLimMin	EEV_LOP_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B017 - Интегрирующая составляющая регулирования вентиля ЭРВ: тревога минимального рабочего давления в режиме охлаждения
+EEV_MOP_ThrshCH	REAL		Var	True	EEV_MOP_Thrsh_MskLimMin	EEV_MOP_Thrsh_MskLimMax	True	False	True	True	True	False	DegreesCelsius	0	1		B020 - Величина регулирования вентиля ЭРВ тревога максимального рабочего давления в режиме охлаждения
+EEV_MOP_TiCH	REAL		Var	True	EEV_MOP_Ti_MskLimMin	EEV_MOP_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B021 - Интегрирующая составляющая регулирования перегрева вентилем ЭРВ: тревога максимального рабочего давления в режиме охлаждения
+EEV_LowSH_ThrshCH	REAL		Var	True	EEV_LowSH_Thrsh_MskLimMin	EEV_LowSH_Thrsh_MskLimMax	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		B012 - Величина перегрева вентилем ЭРВ: тревога низкого перегрева в режиме охлаждения
+EEV_LowSH_TiCH	REAL		Var	True	EEV_LowSH_Ti_MskLimMin	EEV_LowSH_Ti_MskLimMax	True	False	True	True	True	False	Seconds	0	1		B013 - Интегрирующая составляющая регулирования перегрева вентилем ЭРВ:
+SrcFan1Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		E006 - Счетчик времени до техобслуживания вентилятора конденсатора 1 контура 1
 SrcFan2Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	False	True	True	False	Hours	0	1		E006b - Source fan 2 circuit 1 maintenance hour threshold (in thousands)
 SrcFan3Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	False	True	True	False	Hours	0	1		Source fan 3 circuit 1 maintenance hour threshold (in thousands)
 SrcPmp1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	False	False	Hours	0	1		E000 - Sourse pump 1 Hours Thrsh
 SrcPmp2HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	False	False	Hours	0	1		E002 - Sourse pump 2 Hours Thrsh
-Comp1Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca00 - Compressor 1 circuit 1 maintenance hour threshold (in thousands)
-Comp2Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca02 - Compressor 2 circuit 1 maintenance hour threshold (in thousands)
+Comp1Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca00 - Счетчик времени до техобслуживания компрессора 1 контура 1
+Comp2Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca02 - Счетчик времени до техобслуживания компрессора 2 контура 1
 Comp3Circ1HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca04 - Compressor 3 circuit 1 maintenance hour threshold (in thousands)
-CompsLdUpT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca15 - Compressor load up time
+CompsLdUpT	UINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		Ca15 - Время задержки включения одного компрессора относительного другого
 SuctTempCirc2	REAL		Var	True	-999.9	999.9	False	False	True	True	False	True	DegreesCelsius	0	1		Suction temperature probe circuit 2
 Al_OvldComp1Circ2.Trigger	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status Trigger
 Al_OvldComp1Circ2.Active	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Alarm status
@@ -1703,11 +1703,11 @@ En_SrcFan3Circ1_Aout	BOOL		Var	True			False	False	True	True	False	False	NoUnits	
 SetP_Compens_MaxDiff_HP	REAL		Var	True	-99.9	99.9	True	False	True	True	False	False	DeltaDegreesKelvin	0	1		A013 - Maximum differential temperature for setpoint compensation
 ChgOverDT	UINT		Var	True	0	999	True	False	True	True	False	False	Minutes	0	1		A024 - Changeover delay time
 ChgOverTyp	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		A023 - Changeover type (0=Keyboard, 1=DIn)
-HiW_TempStartupDT	UDINT		Var	True	0	99	True	False	True	True	True	False	Minutes	0	1		A021 - High water temperature startup delay
-HiW_TempRunDT	UDINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A022 - High water temperature run delay
-HiW_TempOfs	REAL		Var	True	0.0	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A020 - High water temperature setpoint offset
+HiW_TempStartupDT	UDINT		Var	True	0	99	True	False	True	True	True	False	Minutes	0	1		A021 - Задержка тревоги во время запуска
+HiW_TempRunDT	UDINT		Var	True	0	999	True	False	True	True	True	False	Seconds	0	1		A022 - Задержка тревоги во время работы
+HiW_TempOfs	REAL		Var	True	0.0	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A020 - Отклонение от уставки: тревога во время высокой температуре воздуха
 En_FC	BOOL		Var	True			True	False	True	True	True	False	NoUnits	0	1		A063 - Enable free-cooling function
-EEV_StartOpRatioCH	INT		Var	True	EEV_StartEEV_OpRatio_MskLimMin	EEV_StartEEV_OpRatio_MskLimMax	True	False	True	True	True	False	Percent	0	1		B032 - ExV startup valve opening % (capacity ratio EVAP / EEV) in cooling
+EEV_StartOpRatioCH	INT		Var	True	EEV_StartEEV_OpRatio_MskLimMin	EEV_StartEEV_OpRatio_MskLimMax	True	False	True	True	True	False	Percent	0	1		B032 - Соотношение производительности ИСП/ТРВ в режиме охлаждения
 FC_DeltaTemp	REAL		Var	True	-99.9	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A057 - Delta temperature to activate free-cooling coil regulation
 FC_DeltaTempHyst	REAL		Var	True	-99.9	99.9	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		A058 - Free-Cooling On-Off hysteresis
 EEV_SH_SetCH	REAL		Var	True	EEV_SH_Set_MskLimMin	EEV_SH_Set_MskLimMax	True	False	True	True	True	False	DeltaDegreesKelvin	0	1		B004 - ExV SH setpoint in cooling
@@ -1986,7 +1986,7 @@ SuctP_Prb_Circ2.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	0	1
 SuctP_Prb_Circ2.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 SuctP_Prb_Circ2.MinVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Min probe value
 SuctP_Prb_Circ2.MaxVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Max probe value
-SuctP_Prb_Circ2.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca45 - Probe offset
+SuctP_Prb_Circ2.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca45 - Датчик давления всасывания контура 2: коррекция
 SuctP_Prb_Circ2.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 Comp3Circ2_On	BOOL		Var	True			False	True	True	True	False	True	NoUnits	0	1		Compressor 3 circuit 2 status
 DscgP_Prb_Circ2.Val	REAL		Var	True			False	True	False	True	False	False	Bars	0	1		Value
@@ -1995,7 +1995,7 @@ DscgP_Prb_Circ2.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	0	1
 DscgP_Prb_Circ2.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 DscgP_Prb_Circ2.MinVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Min probe value
 DscgP_Prb_Circ2.MaxVal	REAL		Var	True			False	True	False	False	False	False	Bars	0	1		Max probe value
-DscgP_Prb_Circ2.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca44 - Probe offset
+DscgP_Prb_Circ2.Offset	REAL		Var	True	-99.9	99.9	True	True	True	True	True	False	Bars	0	1		Ca44 - Датчик давления нагнетания контура 2: коррекция
 DscgP_Prb_Circ2.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 Comp2Circ2_On	BOOL		Var	True			False	True	True	True	False	True	NoUnits	0	1		Compressor 2 circuit 2 status
 RevVlvCirc2	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Reverse valve
@@ -2005,7 +2005,7 @@ DscgTempPrb_Circ2.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	0
 DscgTempPrb_Circ2.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 DscgTempPrb_Circ2.MinVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Min probe value
 DscgTempPrb_Circ2.MaxVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Max probe value
-DscgTempPrb_Circ2.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca38 - Probe offset
+DscgTempPrb_Circ2.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca38 - Датчик температуры нагнетания контура 2: коррекция
 DscgTempPrb_Circ2.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 SolVlvCirc2	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		Solenoid valve circuit 1
 SuctTempPrb_Circ2.Val	REAL		Var	True			False	True	False	True	False	False	DegreesCelsius	0	1		Value
@@ -2014,7 +2014,7 @@ SuctTempPrb_Circ2.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	0
 SuctTempPrb_Circ2.Filt	UINT		Var	True			True	True	False	True	False	False	NoUnits	0	1		Filter intensity
 SuctTempPrb_Circ2.MinVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Min probe value
 SuctTempPrb_Circ2.MaxVal	REAL		Var	True			False	True	False	False	False	False	DegreesCelsius	0	1		Max probe value
-SuctTempPrb_Circ2.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca39 - Probe offset
+SuctTempPrb_Circ2.Offset	REAL		Var	True			True	True	True	True	True	False	DeltaDegreesKelvin	0	1		Ca39 - Датчик температуры всасывания контура 2: коррекция
 SuctTempPrb_Circ2.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Channel is enable
 OilEquVlvCirc2	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		Oil equalization solenoid valve circuit 1
 CondTempPrb_Circ2.Val	REAL		Var	True			False	True	False	True	False	False	DegreesCelsius	0	1		Value
@@ -2051,11 +2051,11 @@ VapInjSet	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	DegreesCelsi
 FrcOn_Comp3Circ2_OilMigr	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 VapInjOffDiff	REAL		Var	True	0.0	99.9	True	False	True	True	False	False	DeltaDegreesKelvin	0	1		CaXX - Vapor injection off differential
 FrcOn_Comp2Circ2_OilMigr	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
-CircPwrDist	UINT		Var	True	0	2	True	False	True	True	True	False	NoUnits	0	1		Ca35 - Circuit power distribution (0=Grouped, 1=Equalized, 2=Grouped at start and equalized at shutdown)
+CircPwrDist	UINT		Var	True	0	2	True	False	True	True	True	False	NoUnits	0	1		Ca35 - Распределение производительности контуров (0: группа; 1: поровну; 2: старт группы – стоп группы)
 FrcOn_Comp1Circ2_OilMigr	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 SrcFan1Circ2HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		E009 - Source fan 1 circuit 2 maintenance hour threshold (in thousands)
 En_VapInj	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		CaXX - Enable vapor injection function
-EEV_MoveCurr	INT		Var	True	EEV_MoveCurr_MskLimMin	EEV_MoveCurr_MskLimMax	True	False	True	True	True	False	Milliamperes	0	1		B043 - ExV move current custom
+EEV_MoveCurr	INT		Var	True	EEV_MoveCurr_MskLimMin	EEV_MoveCurr_MskLimMax	True	False	True	True	True	False	Milliamperes	0	1		B043 - Конфигурируемый рабочий ток вентиля ЭРВ
 SrcFan2Circ2HrsThrsh	UDINT		Var	True	0	999999	True	False	False	True	False	False	Hours	0	1		E084 - Source fan 2 circuit 2 maintenance hour threshold (in thousands)
 SrcFan3Circ2HrsThrsh	UDINT		Var	True	0	999999	True	False	False	True	False	False	Hours	0	1		E086 - Source fan 3 circuit 2 maintenance hour threshold (in thousands)
 SlaveParity_msk	UINT		Var	True	0	2	True	False	True	True	True	False	NoUnits	0	1		Ge10 - Slave parity (0=None; 1=Odd; 2=Even)
@@ -2165,7 +2165,7 @@ SrcFan3Circ2_Aout.Enable	BOOL		Var	True			False	False	False	False	False	False	No
 En_SrcFan2Circ2_Aout	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 En_SrcFan1Circ2_Aout	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 En_Circ1	BOOL		Var	True			False	False	False	True	False	False	NoUnits	0	1		
-EVDEVO_EEV_Typ	INT		Var	True	0	22	True	False	True	True	True	False	NoUnits	0	1		B050 - ExV valve type (for EVD EVO)
+EVDEVO_EEV_Typ	INT		Var	True	0	22	True	False	True	True	True	False	NoUnits	0	1		B050 - Тип вентиля ЭРВ (для привода EVD EVO)
 DfrSyncOtherCirc[0]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 DfrSyncOtherCirc[1]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 DfrSyncOtherCirc[2]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
@@ -2199,11 +2199,11 @@ DfrSyncOtherCirc[29]	INT		Var	True			False	False	False	False	False	False	NoUnits
 DfrSyncOtherCirc[30]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 DfrSyncOtherCirc[31]	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 En_SrcFan3Circ2_Aout	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
-EEV_HoldCurr	INT		Var	True	EEV_HoldCurr_MskLimMin	EEV_HoldCurr_MskLimMax	True	False	True	True	True	False	Milliamperes	0	1		B044 - ExV hold current custom 
+EEV_HoldCurr	INT		Var	True	EEV_HoldCurr_MskLimMin	EEV_HoldCurr_MskLimMax	True	False	True	True	True	False	Milliamperes	0	1		B044 - Конфигурируемый ток удержания вентиля ЭРВ
 Comp1Circ2HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca06 - Compressor 1 circuit 2 maintenance hour threshold (in thousands)
 Comp2Circ2HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca08 - Compressor 2 circuit 2 maintenance hour threshold (in thousands)
 Comp3Circ2HrsThrsh	UDINT		Var	True	0	999999	True	False	True	True	True	False	Hours	0	1		Ca10 - Compressor 3 circuit 2 maintenance hour threshold (in thousands)
-SrcAoutTyp	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		E063 - Source analog output type (0=0...10V; 1=PWM)
+SrcAoutTyp	BOOL		Var	True			True	False	True	True	False	False	NoUnits	0	1		E063 - Тип регулирования (0: диапазон регулирования; 1 ПИД-регулятор)
 CompsOnOffCfg.StepNo	UINT		Var	True			False	False	False	False	False	False	NoUnits	0	1		Step number
 CompsOnOffCfg.StartUpT	UINT		Var	True			False	False	False	False	False	False	NoUnits	0	1		Startup time
 CompsOnOffCfg.ShOffT	UINT		Var	True			False	False	False	False	False	False	NoUnits	0	1		Shutoff time
@@ -2462,7 +2462,7 @@ U9_Din.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1
 EEV_MoveRate_MskLimMin	INT		Var	True			False	False	True	True	False	False	Hertz	0	1		EVD mask parameter limits
 SlavePresent	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 EEV_MoveRate_MskLimMax	INT		Var	True			False	False	True	True	False	False	Hertz	0	1		EVD mask parameter limits
-LP_PstatAlrmRunDT	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		Ca20 - Low pressure pressostat alarm run delay
+LP_PstatAlrmRunDT	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		Ca20 - Время задержки тревоги низкого давления во время работы машины
 EEV_FastClosMoveRate_MskLimMin	INT		Var	True			False	False	True	True	False	False	Hertz	0	1		EVD mask parameter limits
 U10_Din.Val	BOOL		Var	True			False	True	True	False	False	False	NoUnits	0	1		
 U10_Din.Err	INT		Var	True			False	True	True	False	False	False	NoUnits	0	1		
@@ -2480,7 +2480,7 @@ EnvP_Y3_Temp_Circ2	REAL		Var	True			False	False	True	False	False	False	DegreesCe
 EEV_LowSH_AlrmDT_MskLimMax	INT		Var	True			False	False	True	True	False	False	Seconds	0	1		EVD mask parameter limits
 RegAlrms_A_EVD	INT		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 EEV_LOP_AlrmDT_MskLimMin	INT		Var	True			False	False	True	True	False	False	Seconds	0	1		EVD mask parameter limits
-LP_PstatAlrmStartupDT	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		Ca19 - Low pressure pressostat alarm start delay
+LP_PstatAlrmStartupDT	UINT		Var	True	0	99	True	False	True	True	True	False	Seconds	0	1		Ca19 - Время задержки тревоги низкого давления в момент запуска машины
 EEV_LOP_AlrmDT_MskLimMax	INT		Var	True			False	False	True	True	False	False	Seconds	0	1		EVD mask parameter limits
 EEV_MOP_AlrmDT_MskLimMin	INT		Var	True			False	False	True	True	False	False	Seconds	0	1		EVD mask parameter limits
 SrcPmp1Inv_Man	UINT		Var	True	0	101	True	False	True	True	False	False	Percent	0	1		E001 - Sourse pump 1 inverter manual conrol
@@ -2637,7 +2637,7 @@ ImpExpJmp	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		Appl
 RevVlvSpeedRps	REAL		Var	True	0.0	999.9	False	False	True	True	False	False	NoUnits	0	1		E050 - BLDC minimum speed in defrost
 SrcEnvSetP_HP_Circ2	REAL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 DfrFrcCompSpeedMax	REAL		Var	True	0.0	999.9	True	False	True	True	False	False	NoUnits	0	1		E049 - BLDC maximum speed in defrost
-SrcFanCirc1_Man	UINT		Var	True			True	False	True	True	True	False	Percent	0	1		E007 - Source fan inverter circuit 1 manual mode
+SrcFanCirc1_Man	UINT		Var	True			True	False	True	True	True	False	Percent	0	1		E007 - Ручной режим управления вентилятором конденсатора контура 1
 EnvP_X7_Temp_Circ2	REAL		Var	True			False	False	True	False	False	False	DegreesCelsius	0	1		
 SuctTempSaturationThrshZone1b1c	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 SrcFanCirc2_Man	UINT		Var	True			True	False	True	True	True	False	Percent	0	1		E010 - Source fan inverter circuit 2 manual mode
@@ -4261,7 +4261,7 @@ S4_Value_Prob_Tdisch_Circ1	REAL		Var	True	-999.9	999.9	False	False	False	False	F
 LowP_PstatCirc4	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 SrcFan3Circ4_Req	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 SrcFan1Circ3_On	BOOL		Var	True			False	True	True	True	False	True	NoUnits	0	1		Source fan 1 circuit 2 status
-SP_Dsch_HiTemp	REAL		Var	True			True	False	False	True	True	False	DeltaDegreesCelsius	0	1		Ca71 - High discharge temperature setpoint
+SP_Dsch_HiTemp	REAL		Var	True			True	False	False	True	True	False	DeltaDegreesCelsius	0	1		Ca71 - Максимальная температура нагнетания
 HiP_PstatCirc4	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 SrcFanFreeCoolingOnCirc4	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 HiP_PstatCirc3_Din.Val	BOOL		Var	True			False	True	True	True	False	False	NoUnits	0	1		
@@ -4269,11 +4269,11 @@ HiP_PstatCirc3_Din.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	
 HiP_PstatCirc3_Din.Logic	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 HiP_PstatCirc3_Din.Internal	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 HiP_PstatCirc3_Din.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
-SP_Dellay_HiTemp	UINT		Var	True	0	300	True	False	False	True	True	False	Seconds	0	1		Ca72 - Delay setpoint high discharge temperature
+SP_Dellay_HiTemp	UINT		Var	True	0	300	True	False	False	True	True	False	Seconds	0	1		Ca72 - Время задержки срабатывания тревоги максимальной температуры нагнетания
 OvldComp1Circ4	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 SrcFan1Circ4_On	BOOL		Var	True			False	True	True	True	False	True	NoUnits	0	1		Source fan 1 circuit 2 status
 Comp1Circ3_On	BOOL		Var	True			False	True	True	True	False	True	NoUnits	0	1		Compressor 1 circuit 1 status
-SP_Dsch_AllrmTemp	REAL		Var	True			True	False	False	True	True	False	DeltaDegreesCelsius	0	1		Ca73 - Emergency discharge temperature setting
+SP_Dsch_AllrmTemp	REAL		Var	True			True	False	False	True	True	False	DeltaDegreesCelsius	0	1		Ca73 - Аварийная температура нагнетания
 OvldComp2Circ4	BOOL		Var	True			False	False	True	True	False	True	NoUnits	0	1		
 SrcFan2Circ4_Man	UINT		Var	True	0	2	False	False	False	True	False	False	NoUnits	0	1		E085 - Source fan 2 circuit 2 manual mode
 OvldComp3Circ3_Din.Val	BOOL		Var	True			False	True	True	True	False	False	NoUnits	0	1		
@@ -4281,7 +4281,7 @@ OvldComp3Circ3_Din.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	
 OvldComp3Circ3_Din.Logic	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 OvldComp3Circ3_Din.Internal	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
 OvldComp3Circ3_Din.Enable	BOOL		Var	True			False	False	False	False	False	False	NoUnits	0	1		
-SP_Dellay_AllrmTemp	UINT		Var	True	0	300	True	False	False	True	True	False	Seconds	0	1		Ca74 - Delay setting of the emergency discharge temperature
+SP_Dellay_AllrmTemp	UINT		Var	True	0	300	True	False	False	True	True	False	Seconds	0	1		Ca74 - Время задержки срабатывания тревоги аварийной температуры нагнетания
 SuctP_Prb_Circ3.Val	REAL		Var	True			False	True	False	True	False	False	Bars	0	1		Value
 SuctP_Prb_Circ3.ChTyp	UINT		Var	True			False	True	False	False	False	False	NoUnits	0	1		Channel type
 SuctP_Prb_Circ3.Err	INT		Var	True			False	True	True	True	False	False	NoUnits	0	1		Error
@@ -4433,11 +4433,11 @@ Oil_Separator_Heat_Circ2.Enable	BOOL		Var	True			False	False	False	True	False	Fa
 Oil_Separator_Heat_Circ2.Logic	BOOL		Var	True			True	False	False	True	False	False	NoUnits	0	1		
 Oil_Separator_Heat_Circ2.Manual	USINT		Var	True			True	False	True	True	False	False	NoUnits	0	1		Ca81b
 Oil_Separator_Heat_Circ2.Internal	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
-SP_Dsch_AllrmDifferentTemp	REAL		Var	True			True	False	False	True	True	False	DeltaDegreesCelsius	0	1		Ca75 - Setpoint of the discharge temperature difference
+SP_Dsch_AllrmDifferentTemp	REAL		Var	True			True	False	False	True	True	False	DeltaDegreesCelsius	0	1		Ca75 - Разность температур на нагнетании.
 En_Comp3Circ3_Dout	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 En_OvldComp3Circ4_Din	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 SrcFan3Circ4_Man	UINT		Var	True	0	2	False	False	False	True	False	False	NoUnits	0	1		E087 - Source fan 3 circuit 2 manual mode
-SP_Dellay_AllrmDiffTemp	UINT		Var	True	0	300	True	False	False	True	True	False	Seconds	0	1		Ca76 - Time setting of the discharge temperature difference
+SP_Dellay_AllrmDiffTemp	UINT		Var	True	0	300	True	False	False	True	True	False	Seconds	0	1		Ca76 - Время задержки срабатывания тревоги разности температур на нагнетании.
 En_Comp1Circ3_Dout	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 En_OvldComp2Circ4_Din	BOOL		Var	True			False	False	True	True	False	False	NoUnits	0	1		
 SrcFan3Circ4_On	BOOL		Var	True			False	True	True	True	False	False	NoUnits	0	1		Source fan 3 circuit 1
